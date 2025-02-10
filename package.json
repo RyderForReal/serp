@@ -19,10 +19,10 @@
     "vue": "latest",
     "vue-router": "latest"
   },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0",
   "devDependencies": {
     "@nuxt/ui": "^2.21.0",
     "@nuxtjs/seo": "^2.1.1",
     "@nuxtjs/tailwindcss": "6.13.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
