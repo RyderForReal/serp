@@ -11,15 +11,15 @@ const state = reactive({
   url: "https://example.com",
 })
 
-function getProgressColor(value: number, max: number) {
-  if (value > max) return "red"
+function getProgressColor(value: number, max: number): "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined {
+  if (value > max) return "error"
   const delta = (max - value) / max
 
-  if (delta < 0.05) return "orange"
-  if (delta < 0.25) return "green"
-  if (delta < 0.3) return "amber"
-  if (delta < 0.4) return "orange"
-  else return "red"
+  if (delta < 0.05) return "warning"
+  if (delta < 0.25) return "success"
+  if (delta < 0.3) return "info"
+  if (delta < 0.4) return "warning"
+  else return "error"
 }
 
 const titleProgressColor = computed(() => getProgressColor(state.title.length, MAX_META_TITLE))
@@ -33,27 +33,27 @@ const descriptionProgressColor = computed(() => getProgressColor(state.descripti
       <h3 class="select-none">Settings</h3>
 
       <h4 class="select-none">General</h4>
-      <UFormGroup label="Brand Name" name="name" class="mb-2">
+      <UFormField label="Brand Name" name="name" class="mb-2">
         <UInput v-model="state.name"/>
-      </UFormGroup>
-      <UFormGroup label="Logo" name="logo" class="mb-2">
+      </UFormField>
+      <UFormField label="Logo" name="logo" class="mb-2">
         <UInput v-model="state.logo"/>
-      </UFormGroup>
-      <UFormGroup label="URL" name="url" class="mb-4">
+      </UFormField>
+      <UFormField label="URL" name="url" class="mb-4">
         <UInput v-model="state.url"/>
-      </UFormGroup>
+      </UFormField>
 
       <h4 class="select-none">Meta</h4>
-      <UFormGroup label="Title" name="title" class="mb-2">
+      <UFormField label="Title" name="title" class="mb-2">
         <UInput v-model="state.title"/>
         <UProgress :max="MAX_META_TITLE" :value="state.title.length" class="mt-1"
                    :color="titleProgressColor"/>
-      </UFormGroup>
-      <UFormGroup label="Description" name="description">
+      </UFormField>
+      <UFormField label="Description" name="description">
         <UTextarea v-model="state.description"/>
         <UProgress :max="MAX_META_DESCRIPTION" :value="state.description.length" class="mt-1"
                    :color="descriptionProgressColor"/>
-      </UFormGroup>
+      </UFormField>
     </UForm>
     <div class="shadow-md bg-white p-4 flex flex-col w-[40rem] rounded-md h-33 mx-auto">
       <div class="hover:underline hover:cursor-pointer">
